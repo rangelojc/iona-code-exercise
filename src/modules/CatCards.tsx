@@ -8,7 +8,7 @@ const CatCards = ({ catList, viewCat }: any) => {
   }
 
   return (
-    <>
+    <div className="cat-browser-cards">
       {
         catList.map((cat: any) => <>
           <Card>
@@ -26,7 +26,7 @@ const CatCards = ({ catList, viewCat }: any) => {
       <Card className='empty'></Card>
       <Card className='empty'></Card>
       <Card className='empty'></Card>
-    </>
+    </div>
   )
 }
 

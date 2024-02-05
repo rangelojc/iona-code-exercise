@@ -18,17 +18,17 @@ const CatBrowser = () => {
       <CatSelect breedList={state.breedList} onChange={controller.setBreed} />
 
       <section className='cat-browser'>
+
         <Shadow show={state.catList.length <= 0}>
           <p>No cats available</p>
         </Shadow>
 
-        <div className="cat-browser-cards">
-          <Shadow show={state.catList.length > 0}>
-            <CatCards catList={state.catList} viewCat={controller.viewCat} />
-          </Shadow>
-        </div>
-
         <Shadow show={state.catList.length > 0}>
+          <CatCards catList={state.catList} viewCat={controller.viewCat} />
+        </Shadow>
+
+        {/* Show button only if there is a list of cats and it isn't the last page  */}
+        <Shadow show={state.catList.length > 0 && !state.browser.isLastPage}>
           <Button
             variant="primary"
             className='cat-browser-more-btn'
@@ -44,7 +44,11 @@ const CatBrowser = () => {
             </Shadow>
           </Button>
         </Shadow>
-      </section>
+
+        <Shadow show={state.browser.isLastPage}>
+          <p style={{ width: '100%', textAlign: 'center' }}>You have reached the end of the list.</p>
+        </Shadow>
+      </section >
     </>
   )
 }

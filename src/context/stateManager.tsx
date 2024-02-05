@@ -6,8 +6,10 @@ const STATE_DEFAULTS = {
     breedList: [],
     catList: [],
     catId: '',
+
     browser: {
-        page: 1
+        page: 1,
+        isLastPage: false,
     }
 }
 
@@ -21,7 +23,11 @@ const StateManagerProvider = ({ children }: IStateManagerProvider) => {
     const [browser, setBrowser] = useState<IStateManagerBrowserConfig>(STATE_DEFAULTS.browser)
 
     const setPage = (page: number) => {
-        setBrowser({ page })
+        setBrowser({ ...browser, page })
+    }
+
+    const setLastPage = (isLastPage: boolean) => {
+        setBrowser({ ...browser, isLastPage })
     }
 
     return (
@@ -36,7 +42,8 @@ const StateManagerProvider = ({ children }: IStateManagerProvider) => {
             setBreedId,
             setCatList,
             setCatId,
-            setPage
+            setPage,
+            setLastPage
         }}>
             {children}
         </StateManager.Provider>

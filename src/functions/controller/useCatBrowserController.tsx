@@ -17,37 +17,55 @@ const useCatBrowserController = (): ICatBrowserControllerReturn => {
 
     const [buttonLoading, setButtonLoading] = useState<boolean>(false)
 
+    //Load breeds on initialization of hook
     useEffect(() => {
         loadBreeds()
     }, [])
 
+    //Load cat list based on changes in breedId or browser page config
     useEffect(() => {
-        loadCats(state.breedId)
-    }, [state.breedId, state.browser])
+        loadCats(state.breedId, state.browser.page)
+    }, [state.breedId, state.browser.page])
 
+    //Load breed list for breed select box
     const loadBreeds = async () => {
         const response = await getCats()
-        state.setBreedList(response)
+        state.setBreedList(response.data)
     }
 
-    const loadCats = async (breedId: string) => {
+    //Load cat list based on breedid selected, show error if found
+    const loadCats = async (breedId: string, page: number) => {
         if (state.breedId) {
-            const newCats = await getCatsByBreed({ breedId, page: state.browser?.page || 1 })
-            state.setCatList([...state.catList, ...newCats])
-            setButtonLoading(false)
+            const response = await getCatsByBreed({ breedId, page })
+            const newCats = response.data
+
+            if (!response.errorMessage) {
+                state.setCatList([...state.catList, ...newCats])
+                state.setLastPage(newCats.length < 10 ? true : false)
+                setButtonLoading(false)
+            }
+            else {
+                alert(response.errorMessage)
+            }
         }
     }
 
+    //Load more cats by adding +1 page in state and letting useEffect read changes
     const loadMoreCats = () => {
         setButtonLoading(true)
         const currentPage = state.browser.page;
         state.setPage(currentPage + 1)
     }
 
+    //Set breed id based on selection letting useEffect read changes
     const setBreed = (event: any) => {
+        state.setPage(1)
+        state.setCatList([])
+        state.setLastPage(false)
         state.setBreedId(event.target.value)
     }
 
+    //Set cat id based on cat details clicked
     const viewCat = (catId: any) => {
         state.setCatId(catId)
     }

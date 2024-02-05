@@ -1,5 +1,6 @@
 export interface IStateManagerBrowserConfig {
     page: number
+    isLastPage: boolean
 }
 
 export interface IStateManager {
@@ -14,6 +15,7 @@ export interface IStateManager {
     setCatId?: any
     setCatList?: any
     setPage?: any
+    setLastPage?: any
 }
 
 export interface IStateManagerProvider {
