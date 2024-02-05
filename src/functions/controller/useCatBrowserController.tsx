@@ -46,6 +46,7 @@ const useCatBrowserController = (): ICatBrowserControllerReturn => {
             }
             else {
                 alert(response.errorMessage)
+                setButtonLoading(false)
             }
         }
     }
