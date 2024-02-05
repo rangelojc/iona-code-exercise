@@ -5,6 +5,15 @@
         width: 100%;
         margin-bottom: 15px;
         margin-right: 0.5%;
+
+        @include breakpoint(md) {
+            margin-top: 20px;
+        }
+    }
+
+    &-empty {
+        height: 400px;
+        background: #e2e2e2;
     }
 
     &-header {

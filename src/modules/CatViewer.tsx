@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import getCatById from '../functions/api/get-cat-by-id';
+import Shadow from '../components/Shadow';
 
 const CatViewer = () => {
   const navigate = useNavigate()
@@ -39,18 +40,24 @@ const CatViewer = () => {
           <Button className="cat-viewer-back-btn" variant="primary" onClick={back}>Back</Button>
         </section>
 
-        <section>
-          <Card.Img variant="top" src="" />
-          <Card.Body>
-            <Card.Img src={data.url}></Card.Img>
-            <div className="cat-viewer-text">
-              <Card.Title>{getCatInfo('name')}</Card.Title>
-              <Card.Text className="cat-viewer-origin">Origin: {getCatInfo('origin')}</Card.Text>
-              <Card.Text className="cat-viewer-temp"> Temperament: {getCatInfo('temperament')}</Card.Text>
-              <Card.Text className="cat-viewer-desc">{getCatInfo('description')}</Card.Text>
-            </div>
-          </Card.Body>
-        </section>
+        <Shadow show={Object.keys(data).length > 0}>
+          <section>
+            <Card.Img variant="top" src="" />
+            <Card.Body>
+              <Card.Img src={data.url}></Card.Img>
+              <div className="cat-viewer-text">
+                <Card.Title>{getCatInfo('name')}</Card.Title>
+                <Card.Text className="cat-viewer-origin">Origin: {getCatInfo('origin')}</Card.Text>
+                <Card.Text className="cat-viewer-temp"> Temperament: {getCatInfo('temperament')}</Card.Text>
+                <Card.Text className="cat-viewer-desc">{getCatInfo('description')}</Card.Text>
+              </div>
+            </Card.Body>
+          </section>
+        </Shadow>
+
+        <Shadow show={Object.keys(data).length === 0}>
+          <div className="cat-viewer-empty"></div>
+        </Shadow>
       </Card>
     </section>
   )
