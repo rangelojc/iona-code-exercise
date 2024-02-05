@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/iona-code-exercise/static/css/main.eb28104b.css",
-    "main.js": "/iona-code-exercise/static/js/main.e03a6910.js",
+    "main.js": "/iona-code-exercise/static/js/main.67c6c4b7.js",
     "index.html": "/iona-code-exercise/index.html",
     "main.eb28104b.css.map": "/iona-code-exercise/static/css/main.eb28104b.css.map",
-    "main.e03a6910.js.map": "/iona-code-exercise/static/js/main.e03a6910.js.map"
+    "main.67c6c4b7.js.map": "/iona-code-exercise/static/js/main.67c6c4b7.js.map"
   },
   "entrypoints": [
     "static/css/main.eb28104b.css",
-    "static/js/main.e03a6910.js"
+    "static/js/main.67c6c4b7.js"
   ]
 }
