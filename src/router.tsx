@@ -9,7 +9,7 @@ export default createBrowserRouter([
         element: <App />,
     },
     {
-        path: "/:breedId",
+        path: "/:catId",
         element: <View />,
     },
 ]);

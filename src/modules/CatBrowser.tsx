@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { StateManager } from '../context/stateManager';
+import { useNavigate } from 'react-router-dom';
 
 import Shadow from '../components/Shadow';
 import { Button } from 'react-bootstrap';
@@ -9,9 +10,14 @@ import CatCards from './CatCards';
 
 import useCatBrowserController from '../functions/controller/useCatBrowserController'
 
-const CatBrowser = () => {
+const CatBrowser = (props: any) => {
   const state = useContext(StateManager)
   const controller = useCatBrowserController()
+  const navigate = useNavigate()
+
+  const viewCat = (catId: number) => {
+    navigate(`/${catId}`);
+  }
 
   return (
     <>
@@ -24,7 +30,7 @@ const CatBrowser = () => {
         </Shadow>
 
         <Shadow show={state.catList.length > 0}>
-          <CatCards catList={state.catList} viewCat={controller.viewCat} />
+          <CatCards catList={state.catList} viewCat={viewCat} />
         </Shadow>
 
         {/* Show button only if there is a list of cats and it isn't the last page  */}

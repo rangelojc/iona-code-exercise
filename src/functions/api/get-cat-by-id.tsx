@@ -3,22 +3,21 @@ import { handleResponse } from "../utils/apiResponseHandler"
 
 /*
     API call to thecatapi cat list
-    Parameters: IGetCatsByBreed interface
+    Parameters: IGetCatById interface
 */
 
-interface IGetCatsByBreed {
-    breedId: string
-    page: number
+interface IGetCatById {
+    catId: string
 }
 
-const getCatsByBreed = async (payload: IGetCatsByBreed): Promise<any> => {
+const getCatById = async (payload: IGetCatById): Promise<any> => {
     //const apiKey = 'live_iuTAmG2u8Pm54cEQcKcBMdHPvkyNxyMAhaTeNzYd2SzfBLMD1WKf2CQ9ZukIKkgh'
-    const url = `https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${payload.breedId}&page=${payload.page || 1}`
+    const url = `https://api.thecatapi.com/v1/images/${payload.catId}`
     const errorMessage = 'Apologies but we could not load new cats for you at this time! Miau!'
 
     try {
         let response: AxiosResponse = await axios.get(url)
-        //console.log('getCatsByBreed:', response)
+        //console.log('getCatById:', response)
         return handleResponse(response, errorMessage)
     } catch (ex: any) {
         console.error('An error has been encountered!', ex)
@@ -26,4 +25,4 @@ const getCatsByBreed = async (payload: IGetCatsByBreed): Promise<any> => {
     }
 }
 
-export default getCatsByBreed
+export default getCatById

@@ -30,6 +30,10 @@ const StateManagerProvider = ({ children }: IStateManagerProvider) => {
         setBrowser({ ...browser, isLastPage })
     }
 
+    const resetBrowser = () => {
+        setBrowser({ page: 1, isLastPage: false })
+    }
+
     return (
         <StateManager.Provider value={{
             breedId,
@@ -43,7 +47,8 @@ const StateManagerProvider = ({ children }: IStateManagerProvider) => {
             setCatList,
             setCatId,
             setPage,
-            setLastPage
+            setLastPage,
+            resetBrowser
         }}>
             {children}
         </StateManager.Provider>

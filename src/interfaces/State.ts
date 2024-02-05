@@ -16,6 +16,7 @@ export interface IStateManager {
     setCatList?: any
     setPage?: any
     setLastPage?: any
+    resetBrowser?: any
 }
 
 export interface IStateManagerProvider {

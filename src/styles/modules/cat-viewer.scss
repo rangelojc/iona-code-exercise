@@ -1,0 +1,54 @@
+.cat-viewer {
+
+    .card {
+        overflow: hidden;
+        width: 100%;
+        margin-bottom: 15px;
+        margin-right: 0.5%;
+    }
+
+    &-header {
+        width: 100%;
+        height: 60px;
+        background: #f7f7f7;
+        padding: 0 15px;
+
+        @include flexPosition(center, flex-start);
+
+        &-back-btn {
+            width: 60px
+        }
+    }
+
+    .card-img-top {
+        display: none;
+    }
+
+    .card-body {
+        padding: 0;
+    }
+
+    .cat-viewer-text {
+        padding: 20px;
+    }
+
+    .card-text {
+        margin: 0 0 10px 0;
+
+        &.cat-viewer-origin {
+            font-weight: 500;
+            font-size: 1.1em;
+        }
+
+        &.cat-viewer-temp {
+            font-weight: 500;
+            font-size: 1em;
+        }
+
+        &.cat-viewer-desc {
+            font-weight: normal;
+            font-size: 1em;
+        }
+    }
+
+}
