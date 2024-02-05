@@ -25,13 +25,12 @@ const CatViewer = () => {
   }
 
   const back = () => {
-    navigate(`/`);
+    navigate(`/iona-cat-browser`);
   }
 
   const getCatInfo = (key: string) => {
     return data?.breeds?.[0]?.[key] || 'NULL'
   }
-
 
   return (
     <section className="cat-viewer">
@@ -48,7 +47,7 @@ const CatViewer = () => {
               <div className="cat-viewer-text">
                 <Card.Title>{getCatInfo('name')}</Card.Title>
                 <Card.Text className="cat-viewer-origin">Origin: {getCatInfo('origin')}</Card.Text>
-                <Card.Text className="cat-viewer-temp"> Temperament: {getCatInfo('temperament')}</Card.Text>
+                <Card.Text className="cat-viewer-temp">Temperament: {getCatInfo('temperament')}</Card.Text>
                 <Card.Text className="cat-viewer-desc">{getCatInfo('description')}</Card.Text>
               </div>
             </Card.Body>
