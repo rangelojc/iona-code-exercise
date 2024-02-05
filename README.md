@@ -1,3 +1,17 @@
+# Folder structure
+* components - generic UI components
+* context - context api functions
+* functions - other functions including api calls and hooks
+* interfaces - app wide interfaces
+* modules - major page UI modules
+* pages - pages to be served by router
+* styles - scss files
+
+# Opening the app
+In order to be properly hosted in GitHub pages as a free application, this project's entry point is at subpath /iona-code-exercise.
+
+Access via http://localhost:3000/iona-code-exercise
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -21,17 +35,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
-
-# Folder structure
-* components - generic UI components
-* context - context api functions
-* functions - other functions including api calls and hooks
-* interfaces - app wide interfaces
-* modules - major page UI modules
-* pages - pages to be served by router
-* styles - scss files
-
-# Opening the app
-In order to be properly hosted in GitHub pages as a free application, this project's entry point is at subpath /iona-code-exercise.
-
-Access via http://localhost:3000/iona-code-exercise
