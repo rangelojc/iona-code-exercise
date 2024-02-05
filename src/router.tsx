@@ -5,11 +5,11 @@ import { createBrowserRouter } from "react-router-dom";
 
 export default createBrowserRouter([
     {
-        path: "/iona-cat-browser",
+        path: "/iona-code-exercise",
         element: <App />,
     },
     {
-        path: "/iona-cat-browser/:catId",
+        path: "/iona-code-exercise/:catId",
         element: <View />,
     },
 ]);

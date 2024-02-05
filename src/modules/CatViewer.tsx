@@ -25,7 +25,7 @@ const CatViewer = () => {
   }
 
   const back = () => {
-    navigate(`/iona-cat-browser`);
+    navigate(`/iona-code-exercise`);
   }
 
   const getCatInfo = (key: string) => {

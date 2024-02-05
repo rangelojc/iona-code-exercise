@@ -16,7 +16,7 @@ const CatBrowser = (props: any) => {
   const navigate = useNavigate()
 
   const viewCat = (catId: number) => {
-    navigate(`/iona-cat-browser/${catId}`);
+    navigate(`/iona-code-exercise/${catId}`);
   }
 
   return (

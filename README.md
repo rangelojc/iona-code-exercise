@@ -32,6 +32,6 @@ Your app is ready to be deployed!
 > styles - scss files
 
 # Opening the app
-In order to be properly hosted in GitHub pages as a free application, this project is hosted with subpath /iona-code-exercise.
+In order to be properly hosted in GitHub pages as a free application, this project's entry point is at subpath /iona-code-exercise.
 
-Access via http://localhost:3000/iona-cat-browser
+Access via http://localhost:3000/iona-code-exercise
