@@ -1,6 +1,6 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { StateManager } from '../context/stateManager';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import Shadow from '../components/Shadow';
 import { Button } from 'react-bootstrap';
@@ -14,14 +14,29 @@ const CatBrowser = (props: any) => {
   const state = useContext(StateManager)
   const controller = useCatBrowserController()
   const navigate = useNavigate()
+  const [searchParams, setSearchParams]: any = useSearchParams()
+  const [paramsBreedId, setParamsBreedId] = useState(searchParams.get("breedId") || "");
 
+  //Use query params to set breed id to state
+  useEffect(() => {
+    if (state.breedList.length > 0) state.setBreedId(paramsBreedId)
+  }, [state.breedList, paramsBreedId])
+
+  //handle change breed and clear search params
+  const changeBreed = (event: any) => {
+    const breedId: string = event?.target.value
+    setSearchParams({})
+    controller.setBreed(breedId)
+  }
+
+  //navigate to cat view page
   const viewCat = (catId: number) => {
-    navigate(`/iona-code-exercise/${catId}`);
+    navigate(`/iona-code-exercise/${catId}`, { state: { breedId: state.breedId } });
   }
 
   return (
     <>
-      <CatSelect breedList={state.breedList} onChange={controller.setBreed} />
+      <CatSelect breedList={state.breedList} onChange={changeBreed} selectedBreed={paramsBreedId} />
 
       <section className='cat-browser'>
 

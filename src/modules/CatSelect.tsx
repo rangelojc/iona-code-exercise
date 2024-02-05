@@ -1,6 +1,6 @@
 import Form from 'react-bootstrap/Form';
 
-const CatSelect = ({ breedList, onChange }: any) => {
+const CatSelect = ({ breedList, onChange, selectedBreed }: any) => {
   return (
     <>
       <h6>Breed</h6>
@@ -8,7 +8,7 @@ const CatSelect = ({ breedList, onChange }: any) => {
         <option>Select breed</option>
         {
           breedList.map((item: any) =>
-            <option value={item.id}>{item.name}</option>
+            <option value={item.id} selected={selectedBreed === item.id ? true : false}>{item.name}</option>
           )
         }
       </Form.Select>

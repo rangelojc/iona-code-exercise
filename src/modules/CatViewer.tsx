@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -9,6 +9,7 @@ import Shadow from '../components/Shadow';
 const CatViewer = () => {
   const navigate = useNavigate()
   const params = useParams()
+  const location = useLocation()
 
   const [data, setData] = useState<any>({})
 
@@ -24,10 +25,12 @@ const CatViewer = () => {
     else alert(response.errorMessage)
   }
 
+  //go back to cat browser page and reload last breed id from router state
   const back = () => {
-    navigate(`/iona-code-exercise`);
+    navigate(`/iona-code-exercise?breedId=` + location.state?.breedId);
   }
 
+  //get cat info or return NULL
   const getCatInfo = (key: string) => {
     return data?.breeds?.[0]?.[key] || 'NULL'
   }

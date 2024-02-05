@@ -59,10 +59,10 @@ const useCatBrowserController = (): ICatBrowserControllerReturn => {
     }
 
     //Set breed id based on selection letting useEffect read changes
-    const setBreed = (event: any) => {
+    const setBreed = (breedId: string) => {
         state.setCatList([])
         state.resetBrowser()
-        state.setBreedId(event.target.value)
+        state.setBreedId(breedId)
     }
 
     //Set cat id based on cat details clicked
