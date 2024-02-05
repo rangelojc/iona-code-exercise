@@ -1,0 +1,55 @@
+$screen-xxlg: 1400px;
+$screen-xlg: 1190px;
+$screen-lg: 1024px;
+$screen-md: 820px;
+$screen-sm: 576px;
+$screen-xs: 480px;
+
+@mixin breakpoint($point) {
+
+    @if $point ==xs {
+        @media (max-width: $screen-xs) {
+            @content;
+        }
+    }
+
+    @if $point ==sm {
+        @media (max-width: $screen-sm) {
+            @content;
+        }
+    }
+
+    @else if $point ==md {
+        @media (max-width: $screen-md) {
+            @content;
+        }
+    }
+
+    @else if $point ==lg {
+        @media (max-width: $screen-lg) {
+            @content;
+        }
+    }
+
+    @else if $point ==xlg {
+        @media (max-width: $screen-xlg) {
+            @content;
+        }
+    }
+
+
+    @else if $point ==xxlg {
+        @media (max-width: $screen-xxlg) {
+            @content;
+        }
+    }
+}
+
+
+@mixin breakpoint-min($point) {
+    @if $point ==xlg {
+        @media (min-width: $screen-xlg) {
+            @content;
+        }
+    }
+}
