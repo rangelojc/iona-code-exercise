@@ -1,5 +1,5 @@
 .app {
-    margin: 10px 25%;
+    margin: 10px 15%;
 
     @include breakpoint(md) {
         margin: 0px 10px;
@@ -9,6 +9,14 @@
 .header {
     width: 100%;
     height: 60px;
+
+    @include flexPosition(center, flex-start);
+
+    @include breakpoint(md) {
+        h1 {
+            font-size: 2rem;
+        }
+    }
 }
 
 .body {

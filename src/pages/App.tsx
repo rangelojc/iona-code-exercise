@@ -1,4 +1,4 @@
-import CatBrowser from '../components/CatBrowser';
+import CatBrowser from '../modules/CatBrowser';
 import { StateManagerProvider } from '../context/stateManager';
 
 function App() {

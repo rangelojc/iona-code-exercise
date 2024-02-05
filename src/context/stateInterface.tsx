@@ -1,9 +1,13 @@
 export interface IStateManager {
-    selectionId: string,
-    selectionList: any[],
+    breedId: string
+    breedList: any[]
+    catList: any[]
+    catId: string
 
-    setSelectionId?: any
-    setSelectionList?: any
+    setBreedId?: any
+    setBreedList?: any
+    setCatId?: any
+    setCatList?: any
 }
 
 export interface IStateManagerProvider {

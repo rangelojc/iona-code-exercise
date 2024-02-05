@@ -2,21 +2,29 @@ import { createContext, useState } from "react";
 import { IStateManager, IStateManagerProvider } from "./stateInterface";
 
 const StateManager = createContext<IStateManager>({
-    selectionId: '',
-    selectionList: []
+    breedId: '',
+    breedList: [],
+    catList: [],
+    catId: ''
 })
 
 const StateManagerProvider = ({ children }: IStateManagerProvider) => {
-    const [selectionId, setSelectionId] = useState<string>('')
-    const [selectionList, setSelectionList] = useState<any[]>([])
+    const [breedList, setBreedList] = useState<any[]>([])
+    const [breedId, setBreedId] = useState<string>('')
+    const [catList, setCatList] = useState<any[]>([])
+    const [catId, setCatId] = useState<string>('')
 
     return (
         <StateManager.Provider value={{
-            selectionId,
-            selectionList,
+            breedId,
+            breedList,
+            catId,
+            catList,
 
-            setSelectionId,
-            setSelectionList
+            setBreedList,
+            setBreedId,
+            setCatList,
+            setCatId
         }}>
             {children}
         </StateManager.Provider>
