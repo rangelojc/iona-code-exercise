@@ -1,71 +1,50 @@
 import { useContext, useEffect } from 'react';
 import { StateManager } from '../context/stateManager';
-import Form from 'react-bootstrap/Form';
+
 import Shadow from '../components/Shadow';
-import getCatsByBreed from '../functions/api/get-cats-by-breed';
-import getCats from '../functions/api/get-breeds';
+import { Button } from 'react-bootstrap';
+
+import CatSelect from './CatSelect';
+import CatCards from './CatCards';
+
+import useCatBrowserController from '../functions/controller/useCatBrowserController'
 
 const CatBrowser = () => {
   const state = useContext(StateManager)
-
-  useEffect(() => {
-    loadBreeds()
-  }, [])
-
-  useEffect(() => {
-    loadCats(state.breedId)
-  }, [state.breedId])
-
-  const loadBreeds = async () => {
-    const response = await getCats()
-    state.setBreedList(response)
-  }
-
-  const loadCats = async (breedId: string) => {
-    const response = await getCatsByBreed({ breedId })
-    state.setCatList(response)
-  }
-
-  const setBreed = (event: any) => {
-    state.setBreedId(event.target.value)
-  }
+  const controller = useCatBrowserController()
 
   return (
     <>
-      <CatSelect selectionList={state.breedList} onChange={setBreed} />
+      <CatSelect breedList={state.breedList} onChange={controller.setBreed} />
 
       <section className='cat-browser'>
         <Shadow show={state.catList.length <= 0}>
           <p>No cats available</p>
         </Shadow>
+
+        <div className="cat-browser-cards">
+          <Shadow show={state.catList.length > 0}>
+            <CatCards catList={state.catList} viewCat={controller.viewCat} />
+          </Shadow>
+        </div>
+
         <Shadow show={state.catList.length > 0}>
-          <CatItem />
+          <Button
+            variant="primary"
+            className='cat-browser-more-btn'
+            size='lg'
+            onClick={controller.loadMoreCats}
+            disabled={controller.buttonLoading ? true : false}
+          >
+            <Shadow show={!controller.buttonLoading}>
+              Load More
+            </Shadow>
+            <Shadow show={controller.buttonLoading}>
+              Loading Cats...
+            </Shadow>
+          </Button>
         </Shadow>
       </section>
-    </>
-  )
-}
-
-const CatItem = ({ catInfo }: any) => {
-  return (
-    <>
-
-    </>
-  )
-}
-
-const CatSelect = ({ selectionList, onChange }: any) => {
-  return (
-    <>
-      <h5>Breed</h5>
-      <Form.Select aria-label="Select breed" onChange={onChange}>
-        <option>Select breed</option>
-        {
-          selectionList.map((item: any) =>
-            <option value={item.id}>{item.name}</option>
-          )
-        }
-      </Form.Select>
     </>
   )
 }

@@ -1,18 +1,28 @@
 import { createContext, useState } from "react";
-import { IStateManager, IStateManagerProvider } from "./stateInterface";
+import { IStateManager, IStateManagerProvider, IStateManagerBrowserConfig } from "../interfaces/State";
 
-const StateManager = createContext<IStateManager>({
+const STATE_DEFAULTS = {
     breedId: '',
     breedList: [],
     catList: [],
-    catId: ''
-})
+    catId: '',
+    browser: {
+        page: 1
+    }
+}
+
+const StateManager = createContext<IStateManager>(STATE_DEFAULTS)
 
 const StateManagerProvider = ({ children }: IStateManagerProvider) => {
-    const [breedList, setBreedList] = useState<any[]>([])
-    const [breedId, setBreedId] = useState<string>('')
-    const [catList, setCatList] = useState<any[]>([])
-    const [catId, setCatId] = useState<string>('')
+    const [breedList, setBreedList] = useState<any[]>(STATE_DEFAULTS.breedList)
+    const [breedId, setBreedId] = useState<string>(STATE_DEFAULTS.breedId)
+    const [catList, setCatList] = useState<any[]>(STATE_DEFAULTS.catList)
+    const [catId, setCatId] = useState<string>(STATE_DEFAULTS.catId)
+    const [browser, setBrowser] = useState<IStateManagerBrowserConfig>(STATE_DEFAULTS.browser)
+
+    const setPage = (page: number) => {
+        setBrowser({ page })
+    }
 
     return (
         <StateManager.Provider value={{
@@ -20,11 +30,13 @@ const StateManagerProvider = ({ children }: IStateManagerProvider) => {
             breedList,
             catId,
             catList,
+            browser,
 
             setBreedList,
             setBreedId,
             setCatList,
-            setCatId
+            setCatId,
+            setPage
         }}>
             {children}
         </StateManager.Provider>

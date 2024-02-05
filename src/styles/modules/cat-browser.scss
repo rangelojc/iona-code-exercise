@@ -1,3 +1,68 @@
 .cat-browser {
     margin-top: 10px;
+    overflow: auto;
+
+    button {
+        font-size: 0.8em;
+    }
+
+    .cat-browser-more-btn {
+        background: #28a745;
+        border: none;
+        font-size: 1em;
+    }
+
+    &-select {
+        width: 260px;
+
+        @include breakpoint(md) {
+            width: 50%;
+        }
+
+        @include breakpoint(xs) {
+            width: 100%;
+        }
+    }
+
+    &-cards {
+        @include flexFlow(row, wrap);
+        @include flexPosition(flex-start, space-between);
+
+        .card {
+            overflow: hidden;
+            width: 24%;
+            margin-bottom: 15px;
+            margin-right: 0.5%;
+
+            @include breakpoint(md) {
+                width: 49%;
+            }
+
+            @include breakpoint(sm) {
+                width: 100%;
+            }
+
+            &.empty {
+                border: 0;
+                box-shadow: none;
+            }
+        }
+
+        .card-body {
+            @include flexFlow(column, nowrap);
+            @include flexPosition(center, center);
+            padding: 0px;
+            overflow: hidden;
+
+            img {
+                border-radius: 0px;
+            }
+
+            button {
+                display: block;
+                width: 90%;
+                margin: 15px;
+            }
+        }
+    }
 }

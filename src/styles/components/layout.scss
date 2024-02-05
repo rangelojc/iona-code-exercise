@@ -1,5 +1,9 @@
 .app {
-    margin: 10px 15%;
+    margin: 40px 20%;
+
+    @include breakpoint(xxlg) {
+        margin: 40px 10%;
+    }
 
     @include breakpoint(md) {
         margin: 0px 10px;

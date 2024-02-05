@@ -6,7 +6,6 @@ $screen-sm: 576px;
 $screen-xs: 480px;
 
 @mixin breakpoint($point) {
-
     @if $point ==xs {
         @media (max-width: $screen-xs) {
             @content;
@@ -40,15 +39,6 @@ $screen-xs: 480px;
 
     @else if $point ==xxlg {
         @media (max-width: $screen-xxlg) {
-            @content;
-        }
-    }
-}
-
-
-@mixin breakpoint-min($point) {
-    @if $point ==xlg {
-        @media (min-width: $screen-xlg) {
             @content;
         }
     }

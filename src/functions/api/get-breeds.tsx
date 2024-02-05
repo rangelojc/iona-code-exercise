@@ -1,6 +1,10 @@
 import axios, { AxiosResponse } from "axios"
 
-const getCats = async (): Promise<any> => {
+/*
+    API call to thecatapi breed list
+    Parameters: none
+*/
+const getBreeds = async (): Promise<any> => {
     const url = `https://api.thecatapi.com/v1/breeds`
     try {
         let response: AxiosResponse = await axios.get(url)
@@ -11,4 +15,4 @@ const getCats = async (): Promise<any> => {
     }
 }
 
-export default getCats
+export default getBreeds

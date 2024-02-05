@@ -13,39 +13,3 @@
     display: flex;
     flex-flow: $direction $wrap;
 }
-
-@mixin flexPositionClasses {
-    &.center {
-        @include flexPosition(center, center);
-    }
-
-    &.left {
-        @include flexPosition(center, flex-start);
-    }
-
-    &.right {
-        @include flexPosition(center, flex-end);
-    }
-
-    &.between {
-        @include flexPosition(center, space-between);
-    }
-}
-
-@mixin flexDirectionClasses {
-    &.row {
-        @include flexDirection(row);
-    }
-
-    &.row-reverse {
-        @include flexDirection(row-reverse);
-    }
-
-    &.column {
-        @include flexDirection(column);
-    }
-
-    &.column-reverse {
-        @include flexDirection(column-reverse);
-    }
-}
